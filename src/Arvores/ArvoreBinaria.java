@@ -29,38 +29,47 @@ public class ArvoreBinaria<T> {
         return pertence(this.raiz, info);
     }
     
+    //Pior caso é Linear O(n)
+    //Melhor caso Constando O(0)
+    //Pre-ordem a raiz é primeira acessada e no pos-ordem a raiz é a última a ser acessada
     private boolean pertence(NoArvoreBinaria<T> no, T info){
         
-        if(no == null)
+        if(no == null){
             return false;
-        
-        else if(no.getInfo().equals(info))
-            return true;
-        
-        else{
-            if(pertence(no.getEsquerda(), info))
-                return true;
-            else
-                return pertence(no.getDireita(), info);
         }
-        
+        else return(no.getInfo().equals(info) || 
+                pertence(no.getEsquerda(), info) || 
+                pertence(no.getDireita(), info));        
     }
     
+    //representacao textual de uma arvore vazia <raiz rt(se) rt(sd)>
+    //<r<58<><>><>>
     @Override
     public String toString(){ 
-        return "";
+        return arvorePre(raiz);
     }
     
     public String arvorePre(NoArvoreBinaria<T> no){
-        return "" ;
+        if (no == null) {
+            return "<>";
+        }else{
+            return "<" + no.getInfo() + 
+                    arvorePre(no.getEsquerda()) +
+                    arvorePre(no.getDireita()) + ">";
+        }
     }
     
     public int contarNos(){
-        return -1;
+        return contarNos(raiz);
     }
     
     private int contarNos(NoArvoreBinaria<T> no){
-        return -1;
+        if (no == null) {
+            return 0;
+        }
+        else{
+            return 1 + contarNos(no.getEsquerda()) + 
+                       contarNos(no.getDireita());
+        }
     }
-    
 }

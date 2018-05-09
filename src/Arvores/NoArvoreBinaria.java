@@ -13,11 +13,17 @@ package Arvores;
 
 public final class NoArvoreBinaria<T> {
     private T info;
-    private NoArvoreBinaria esquerda = null;
-    private NoArvoreBinaria direita = null;
+    private NoArvoreBinaria<T> esquerda;
+    private NoArvoreBinaria<T> direita;
     
+    /**
+     * Cria um nó sem sub-arvores à esquerda e direita
+     * @param info Valor a ser armazenado na árvore
+     */
     public NoArvoreBinaria(T info) {
         this.setInfo(info);
+        esquerda = null;
+        direita = null;
     }
     
     public NoArvoreBinaria(T info, NoArvoreBinaria<T> esq, NoArvoreBinaria<T> dir){
