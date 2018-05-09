@@ -69,7 +69,7 @@ public class ArvoreBinaria<T> {
         }
         else{
             return 1 + contarNos(no.getEsquerda()) + 
-                       contarNos(no.getDireita());
+                       contarNos(no.getDireita()) ;
         }
     }
 }
