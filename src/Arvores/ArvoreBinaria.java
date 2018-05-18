@@ -72,4 +72,24 @@ public class ArvoreBinaria<T> {
                        contarNos(no.getDireita()) ;
         }
     }
+    
+    public int calcularFolhas ()
+    {
+        return calcularFolhas(raiz);
+    }
+
+    private int calcularFolhas (NoArvoreBinaria<T> no)
+    {
+        if (no == null)
+        {
+            return 0;
+        }
+
+        if (no.getEsquerda() == null && no.getDireita() == null)
+        {
+            return 1;
+        }
+
+        return calcularFolhas(no.getEsquerda()) + calcularFolhas(no.getDireita());
+    }
 }
